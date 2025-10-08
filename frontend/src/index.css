@@ -1,0 +1,102 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    --background: 220 40% 5%;
+    --foreground: 210 100% 98%;
+
+    --card: 220 35% 8%;
+    --card-foreground: 210 100% 98%;
+
+    --popover: 220 35% 10%;
+    --popover-foreground: 210 100% 98%;
+
+    --primary: 195 100% 50%;
+    --primary-foreground: 220 40% 5%;
+
+    --secondary: 280 60% 50%;
+    --secondary-foreground: 210 100% 98%;
+
+    --muted: 220 30% 15%;
+    --muted-foreground: 210 20% 70%;
+
+    --accent: 195 100% 50%;
+    --accent-foreground: 220 40% 5%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 100% 98%;
+
+    --border: 220 30% 20%;
+    --input: 220 30% 15%;
+    --ring: 195 100% 50%;
+
+    --radius: 0.75rem;
+
+    --space-gradient-start: 220 40% 5%;
+    --space-gradient-end: 240 50% 10%;
+    --nebula-purple: 280 60% 50%;
+    --nebula-blue: 195 100% 50%;
+    --planet-glow: 195 100% 70%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    background: linear-gradient(135deg, hsl(var(--space-gradient-start)) 0%, hsl(var(--space-gradient-end)) 100%);
+    min-height: 100vh;
+  }
+}
+
+@layer utilities {
+  .space-bg {
+    background: 
+      radial-gradient(2px 2px at 20% 30%, white, transparent),
+      radial-gradient(2px 2px at 60% 70%, white, transparent),
+      radial-gradient(1px 1px at 50% 50%, white, transparent),
+      radial-gradient(1px 1px at 80% 10%, white, transparent),
+      radial-gradient(2px 2px at 90% 60%, white, transparent),
+      radial-gradient(1px 1px at 33% 80%, white, transparent),
+      radial-gradient(1px 1px at 15% 60%, white, transparent),
+      radial-gradient(1px 1px at 40% 20%, white, transparent),
+      radial-gradient(1px 1px at 70% 90%, white, transparent),
+      radial-gradient(2px 2px at 10% 50%, white, transparent),
+      #000000;
+    background-size: 200% 200%, 180% 180%, 150% 150%, 220% 220%, 160% 160%, 190% 190%, 170% 170%, 210% 210%, 140% 140%, 230% 230%, 100% 100%;
+    background-position: 0% 0%, 100% 100%, 50% 50%, 80% 20%, 20% 80%, 70% 30%, 30% 70%, 45% 15%, 65% 85%, 5% 55%, 0% 0%;
+  }
+  
+  .glass-effect {
+    background: hsl(var(--card) / 0.4);
+    backdrop-filter: blur(12px);
+    border: 1px solid hsl(var(--border) / 0.3);
+  }
+  
+  .planet-rotate {
+    animation: rotate 20s linear infinite;
+  }
+  
+  @keyframes rotate {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  
+  .glow-text {
+    text-shadow: 0 0 20px hsl(var(--primary) / 0.5),
+                 0 0 40px hsl(var(--primary) / 0.3);
+  }
+}

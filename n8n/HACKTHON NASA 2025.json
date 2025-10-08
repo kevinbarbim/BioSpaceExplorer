@@ -1,0 +1,424 @@
+{
+  "name": "HACKTHON NASA 2025",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        64,
+        240
+      ],
+      "id": "f5c21596-4771-4652-8917-0281c9caac4d",
+      "name": "When clicking ‘Execute workflow’"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=Você é um especialista em análise e extração de conteúdo, focado em alta precisão e formatação estrita. Sua única tarefa é analisar o artigo fornecido e extrair as seguintes informações, retornando o resultado e preenchendo na planilha com base nos dados abaixo:\n{{ $json['﻿Title'] }}\n{{ $json.Link }}\n\na . *ID* faça uma contagem de começando por 1\n\nb. *TITULO*: O título do artigo.\n\nc. *LINK* pegue o link do artigo já mencionado\n\nd. *AUTOR* Adicione o autor do Artigo\n\ne. *REFERENCIA* Pegue as referencias do artigo\n\nf. *PALAVRAS-CHAVE: Uma lista de palavras-chave ou frases-chave mais relevantes do artigo ineteiro, *separadas estritamente por vírgulas* (sem pontuação final).\n\ng. *RESUMO: Um resumo detalhado e profissional do artigo inteiro que cubra os pontos principais, as conclusões e as implicações do artigo.\n\nh. *ASTROS: Defina se o artigo e relacionado a Marte, a Lua ou Planeta Terra.*\n\nfaça as alterações na planilha {{ $json['﻿Title'] }}\n\n\n\n\nVocê é um agente especializado em análise e extração científica de conteúdo, com foco em alta precisão, consistência e formatação padronizada. Sua tarefa é ler e analisar um artigo científico completo e preencher cada campo da planilha com extrema fidelidade e detalhamento conforme as instruções abaixo.\n\nA entrada será fornecida no formato:\n\nTÍTULO DO ARTIGO: {{ $json['﻿Title'] }}\n\nLINK DO ARTIGO: {{ $json.Link }}\n\nCom base nisso, você deve preencher cada coluna da planilha da seguinte forma:\n\n🧾 CAMPOS A SEREM PREENCHIDOS\n\na. ID\n\nGere um número sequencial inteiro, começando por 1.\n\nCada novo artigo analisado deve ter um ID subsequente (2, 3, etc.).\n\nb. TÍTULO\n\nExtraia e escreva exatamente o título do artigo científico conforme aparece no documento, sem alterações nem abreviações.\n\nc. LINK\n\nCopie e cole o link fornecido ({{ $json.Link }}).\n\nd. AUTOR\n\nExtraia o(s) nome(s) completo(s) do(s) autor(es) principal(is) do artigo.\n\nListe todos os autores na ordem em que aparecem no artigo, separados por vírgulas.\n\ne. REFERÊNCIA\n\nPegue as referencias do artigo:\nPode ser encontrado nos seguinte lugar:\n- References\n\nf. PALAVRAS-CHAVE\n\nExtraia as palavras-chave mais relevantes do artigo inteiro, com base nos temas principais abordados.\n\nListe no mínimo 5 palavras-chave (ou mais, se relevante).\n\nAs palavras devem ser separadas estritamente por vírgulas, sem ponto final ao final da lista.\n\nExemplo:\nastrobiologia, exploração espacial, Marte, biossignaturas, geologia planetária\n\ng. RESUMO (DETAHADO E PROFISSIONAL)\n\nProduza um resumo técnico e aprofundado do artigo inteiro, com linguagem científica clara e objetiva.\n\nInclua:\n\nObjetivo do estudo\n\nMetodologia resumida\n\nResultados principais\n\nConclusões\n\nImplicações científicas ou práticas\n\nO resumo deve ter entre 150 e 300 palavras, escrito em português claro e formal.\n\nh. ASTROS (CLASSIFICAÇÃO)\n\nAnalise o conteúdo do artigo e classifique exclusivamente em uma das seguintes opções:\n\n\"Marte\" – se o artigo estiver relacionado a pesquisas, estudos ou missões sobre o planeta Marte.\n\n\"Lua\" – se o foco for a Lua.\n\n\"Terra\" – se o conteúdo estiver relacionado ao planeta Terra.\n\nSe houver menções a mais de um astro, escolha o principal foco do estudo.\n",
+        "options": {
+          "systemMessage": "Você é um especialista em análise e extração de conteúdo, focado em alta precisão e formatação estrita. Sua única tarefa é analisar o artigo fornecido e extrair as seguintes informações, retornando o resultado e preenchendo na planilha com base nos dados abaixo:\n{{ $json['﻿Title'] }}\n{{ $json.Link }}\n\na . *ID* faça uma contagem de começando por 1\n\nb. *TITULO*: O título do artigo.\n\nc. *LINK* pegue o link do artigo já mencionado\n\nd. *AUTOR* Adicione o autor do Artigo\n\ne. *REFERENCIA* Pegue as referencias do artigo\n\nf. *PALAVRAS-CHAVE: Uma lista de palavras-chave ou frases-chave mais relevantes do artigo ineteiro, *separadas estritamente por vírgulas* (sem pontuação final).\n\ng. *RESUMO: Um resumo detalhado e profissional do artigo inteiro que cubra os pontos principais, as conclusões e as implicações do artigo.\n\nh. *ASTROS: Defina se o artigo e relacionado a Marte, a Lua ou Planeta Terra.*\n\nfaça as alterações na planilha {{ $json['﻿Title'] }}\n\n\n\n\nVocê é um agente especializado em análise e extração científica de conteúdo, com foco em alta precisão, consistência e formatação padronizada. Sua tarefa é ler e analisar um artigo científico completo e preencher cada campo da planilha com extrema fidelidade e detalhamento conforme as instruções abaixo.\n\nA entrada será fornecida no formato:\n\nTÍTULO DO ARTIGO: {{ $json['﻿Title'] }}\n\nLINK DO ARTIGO: {{ $json.Link }}\n\nCom base nisso, você deve preencher cada coluna da planilha da seguinte forma:\n\n🧾 CAMPOS A SEREM PREENCHIDOS\n\na. ID\n\nGere um número sequencial inteiro, começando por 1.\n\nCada novo artigo analisado deve ter um ID subsequente (2, 3, etc.).\n\nb. TÍTULO\n\nExtraia e escreva exatamente o título do artigo científico conforme aparece no documento, sem alterações nem abreviações.\n\nc. LINK\n\nCopie e cole o link fornecido ({{ $json.Link }}).\n\nd. AUTOR\n\nExtraia o(s) nome(s) completo(s) do(s) autor(es) principal(is) do artigo.\n\nListe todos os autores na ordem em que aparecem no artigo, separados por vírgulas.\n\ne. REFERÊNCIA\n\nPegue as referencias do artigo:\nPode ser encontrado nos seguinte lugar:\n- References\n\nf. PALAVRAS-CHAVE\n\nExtraia as palavras-chave mais relevantes do artigo inteiro, com base nos temas principais abordados.\n\nListe no mínimo 5 palavras-chave (ou mais, se relevante).\n\nAs palavras devem ser separadas estritamente por vírgulas, sem ponto final ao final da lista.\n\nExemplo:\nastrobiologia, exploração espacial, Marte, biossignaturas, geologia planetária\n\ng. RESUMO (DETAHADO E PROFISSIONAL)\n\nProduza um resumo técnico e aprofundado do artigo inteiro, com linguagem científica clara e objetiva.\n\nInclua:\n\nObjetivo do estudo\n\nMetodologia resumida\n\nResultados principais\n\nConclusões\n\nImplicações científicas ou práticas\n\nO resumo deve ter entre 150 e 300 palavras, escrito em português claro e formal.\n\nh. ASTROS (CLASSIFICAÇÃO)\n\nAnalise o conteúdo do artigo e classifique exclusivamente em uma das seguintes opções:\n\n\"Marte\" – se o artigo estiver relacionado a pesquisas, estudos ou missões sobre o planeta Marte.\n\n\"Lua\" – se o foco for a Lua.\n\n\"Terra\" – se o conteúdo estiver relacionado ao planeta Terra.\n\nSe houver menções a mais de um astro, escolha o principal foco do estudo.\n"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 2.2,
+      "position": [
+        1248,
+        -64
+      ],
+      "id": "e6bfdb7c-7312-42aa-8595-98b2f8d6ef1c",
+      "name": "AI Agent",
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "url": "https://raw.githubusercontent.com/jgalazka/SB_publications/main/SB_publication_PMC.csv",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Accept",
+              "value": "text/csv,application/octet-stream"
+            }
+          ]
+        },
+        "options": {
+          "response": {
+            "response": {
+              "responseFormat": "file"
+            }
+          }
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        288,
+        240
+      ],
+      "id": "3bd12faa-e09b-4469-bfa2-072de061ce1b",
+      "name": "HTTP Request"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.extractFromFile",
+      "typeVersion": 1,
+      "position": [
+        512,
+        240
+      ],
+      "id": "8b4ceb8e-7767-4f39-a853-d49a1da07c5a",
+      "name": "Extract from File",
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "value": "gpt-3.5-turbo",
+          "mode": "list",
+          "cachedResultName": "gpt-3.5-turbo"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        1184,
+        160
+      ],
+      "id": "4c52cc71-93aa-48dc-9938-afef281cb9a8",
+      "name": "OpenAI Chat Model",
+      "credentials": {
+        "openAiApi": {
+          "id": "Hhdv6eV7LiRd1FpD",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "contextWindowLength": 608
+      },
+      "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
+      "typeVersion": 1.3,
+      "position": [
+        1312,
+        160
+      ],
+      "id": "f02d8e3c-32ca-496f-bcea-c51395824509",
+      "name": "Simple Memory"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "bc8ed726-5031-4061-81e5-d6e98439d56a",
+              "name": "sessionId",
+              "value": "=sessao-{{ $itemIndex }}",
+              "type": "string"
+            },
+            {
+              "id": "25296d12-c71c-4b3b-89b0-44e642207114",
+              "name": "﻿Title",
+              "value": "={{ $json['﻿Title'] }}",
+              "type": "string"
+            },
+            {
+              "id": "1686bbc5-6bd9-4fcc-8129-4654b5a3f15d",
+              "name": "Link",
+              "value": "={{ $json.Link }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        736,
+        240
+      ],
+      "id": "2c14a119-c81e-45f4-be9a-29130c243a83",
+      "name": "Set Session ID"
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "=https://docs.google.com/spreadsheets/d/1hC32apDZBjh2SMakp1hRAL14_AkyoWaKZ88fesQfUE8/edit?gid=0#gid=0",
+          "mode": "url"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "bd_modal",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1hC32apDZBjh2SMakp1hRAL14_AkyoWaKZ88fesQfUE8/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "ID": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('ID', ``, 'string') }}",
+            "TITULO": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('TITULO', ``, 'string') }}",
+            "LINK": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('LINK', ``, 'string') }}",
+            "AUTOR": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('AUTOR', ``, 'string') }}",
+            "REFERENCIA": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('REFERENCIA', ``, 'string') }}",
+            "PALAVRAS CHAVE": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('PALAVRAS_CHAVE', ``, 'string') }}",
+            "RESUMO": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('RESUMO', ``, 'string') }}",
+            "ASTROS": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('ASTROS', ``, 'string') }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "ID",
+              "displayName": "ID",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "TITULO",
+              "displayName": "TITULO",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "LINK",
+              "displayName": "LINK",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "AUTOR",
+              "displayName": "AUTOR",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "REFERENCIA",
+              "displayName": "REFERENCIA",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "PALAVRAS CHAVE",
+              "displayName": "PALAVRAS CHAVE",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "RESUMO",
+              "displayName": "RESUMO",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "ASTROS",
+              "displayName": "ASTROS",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheetsTool",
+      "typeVersion": 4.7,
+      "position": [
+        1440,
+        160
+      ],
+      "id": "263ba96c-16b7-4b3f-8ed8-8c057ddfdf30",
+      "name": "Append row in sheet in Google Sheets",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "pmr2VB77BoO5Qmam",
+          "name": "Google Sheets - raulagua95@"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        960,
+        240
+      ],
+      "id": "807aad46-fa6a-4b2f-8de2-78b76d82cbc0",
+      "name": "Loop Over Items"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.noOp",
+      "name": "Replace Me",
+      "typeVersion": 1,
+      "position": [
+        1312,
+        336
+      ],
+      "id": "b02924bd-569b-45ab-b86c-f6f08d2c9dd8"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "When clicking ‘Execute workflow’": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request": {
+      "main": [
+        [
+          {
+            "node": "Extract from File",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Extract from File": {
+      "main": [
+        [
+          {
+            "node": "Set Session ID",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent": {
+      "main": [
+        []
+      ]
+    },
+    "OpenAI Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Simple Memory": {
+      "ai_memory": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Set Session ID": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Append row in sheet in Google Sheets": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop Over Items": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Replace Me",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Replace Me": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "saveExecutionProgress": true,
+    "callerPolicy": "workflowsFromSameOwner"
+  },
+  "versionId": "2e4c27e2-10c3-4f22-89e7-d5c614115b91",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "f241ef003be1baa735491fa6729cc66fdca6757847810115f75a2aed343a20a6"
+  },
+  "id": "wGg836LWbiowsRor",
+  "tags": []
+}
